@@ -6,7 +6,7 @@ on:
         
 jobs:
   jekyll:
-    runs-on: rpi3-test
+    runs-on: rpi4-test
     steps:
     - uses: actions/checkout@v2
 
