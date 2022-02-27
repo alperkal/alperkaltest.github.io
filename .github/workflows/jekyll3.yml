@@ -24,5 +24,7 @@ jobs:
       - name: Fix permissions from prev jobs (docker creates files as root) [UNIX]
         shell: bash
         run: |
+          echo $USER
+          echo $GITHUB_WORKSPACE
           sudo chown -R $USER: $GITHUB_WORKSPACE
 
