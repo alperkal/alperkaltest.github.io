@@ -6,6 +6,8 @@ jobs:
   build_and_deploy:
     runs-on: rpi4-test
     steps:
+      - name: Use Docker in rootless mode.
+        uses: ScribeMD/rootless-docker@0
       - name: GitHub Checkout
         uses: actions/checkout@v1
       - name: Bundler Cache
