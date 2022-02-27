@@ -21,6 +21,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ secrets.GITHUB_REPOSITORY }}
           GITHUB_ACTOR: ${{ secrets.GITHUB_ACTOR }}
-      - name: Clean permissions
-        uses: main-quest/actions.clean-permissions@v1.0.4
+      - name: Fix permissions from prev jobs (docker creates files as root) [UNIX]
+        shell: bash
+        run: |
+          sudo chown -R $USER: $GITHUB_WORKSPACE
 
