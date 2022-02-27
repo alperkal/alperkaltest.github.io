@@ -4,7 +4,7 @@ on: [workflow_dispatch]
 
 jobs: 
   build_and_deploy:
-    runs-on: rpi4-test
+    runs-on: rpi-test3
     steps:
       - uses: actions/checkout@v1
       - name: Build & Deploy to GitHub Pages
