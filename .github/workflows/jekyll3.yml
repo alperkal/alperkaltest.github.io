@@ -6,8 +6,6 @@ jobs:
   build_and_deploy:
     runs-on: rpi4-test
     steps:
-      - name: Workspace cleanup
-        uses: AutoModality/action-clean@v1
       - name: GitHub Checkout
         uses: actions/checkout@v1
       - name: Bundler Cache
@@ -23,3 +21,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ secrets.GITHUB_REPOSITORY }}
           GITHUB_ACTOR: ${{ secrets.GITHUB_ACTOR }}
+      - name: Clean permissions
+        uses: main-quest/actions.clean-permissions@v1.0.4
+
