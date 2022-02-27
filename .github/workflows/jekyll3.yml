@@ -4,7 +4,7 @@ on: [workflow_dispatch]
 
 jobs:
   build_and_deploy:
-    runs-on: rpi4-test
+    runs-on: rpi3test
     steps:
       - name: Clean after
         uses: mickem/clean-after-action@v1.1.1
