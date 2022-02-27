@@ -6,8 +6,8 @@ jobs:
   build_and_deploy:
     runs-on: rpi4-test
     steps:
-      - name: Use Docker in rootless mode.
-        uses: ScribeMD/rootless-docker@0.1.1
+      - name: Clean after
+        uses: mickem/clean-after-action@v1.1.1
       - name: GitHub Checkout
         uses: actions/checkout@v1
       - name: Bundler Cache
@@ -23,10 +23,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ secrets.GITHUB_REPOSITORY }}
           GITHUB_ACTOR: ${{ secrets.GITHUB_ACTOR }}
-      - name: Fix permissions from prev jobs (docker creates files as root) [UNIX]
-        shell: bash
-        run: |
-          echo $USER
-          echo $GITHUB_WORKSPACE
-          sudo chown -R $USER: $GITHUB_WORKSPACE
 
