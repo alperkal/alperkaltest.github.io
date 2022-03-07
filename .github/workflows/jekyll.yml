@@ -1,6 +1,22 @@
 name: Github Pages Jekyll Build
 on:
-  workflow_dispatch
+  workflow_dispatch:
+    # Inputs the workflow accepts.
+    inputs:
+      filename:
+        # Friendly description to be shown in the UI instead of 'name'
+        description: 'Image Name'
+        # Default value if no value is explicitly provided
+        default: ''
+        # Input has to be provided for the workflow to run
+        required: true
+      title:
+        # Friendly description to be shown in the UI instead of 'name'
+        description: 'Post Title'
+        # Default value if no value is explicitly provided
+        default: ''
+        # Input has to be provided for the workflow to run
+        required: true
   
 jobs:
   jekyll:
@@ -14,7 +30,7 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-gems-
     - name: gitcheck.sh
-      run: ./gitcheck.sh
+      run: ./gitcheck.sh ${{ github.event.inputs.filename }} "${{ github.event.inputs.title }}"
     - uses: helaili/jekyll-action@2.3.1
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
