@@ -3,11 +3,15 @@ on:
   
 jobs:
   jekyll:
-    runs-on: rpi4-test
+    runs-on: self-hosted
     steps:
     - uses: actions/checkout@v2
-
-    # Standard usage
+    - uses: actions/cache@v2
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile') }}
+        restore-keys: |
+          ${{ runner.os }}-gems-
     - uses:  helaili/jekyll-action@v2
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
