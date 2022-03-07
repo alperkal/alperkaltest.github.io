@@ -10,7 +10,7 @@ on:
 jobs:
   build:
 
-    runs-on: rpi3test
+    runs-on: rpi3
 
     steps:
     - uses: actions/checkout@v2
